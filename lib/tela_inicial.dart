@@ -1,8 +1,5 @@
+import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_profissional.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
 
 class MyApp extends StatelessWidget {
   @override
@@ -76,9 +73,13 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
-                  // Lógica para tratar o clique no item 3 do menu
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MarcarConsulta()),
+                  );
                 },
               ),
+
               Divider(color: Colors.black), // Linha separadora
               ListTile(
                 leading: Icon(Icons.edit, color: Colors.black),
