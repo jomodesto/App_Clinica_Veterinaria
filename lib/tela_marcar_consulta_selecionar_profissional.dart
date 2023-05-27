@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-void main() {
-  runApp(MarcarConsulta());
-}
-
 class MarcarConsulta extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
+      theme: ThemeData(),
       home: SelecionarProfissional(),
     );
   }
