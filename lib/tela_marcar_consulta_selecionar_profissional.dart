@@ -6,6 +6,7 @@ class MarcarConsulta extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(),
+      debugShowCheckedModeBanner: false,
       home: SelecionarProfissional(),
     );
   }
