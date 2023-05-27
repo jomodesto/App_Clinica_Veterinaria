@@ -25,9 +25,12 @@ class SelecionarProfissional extends StatefulWidget {
 class _SelecionarProfissionalState extends State<SelecionarProfissional> {
   late String _selectedProfissional;
   CalendarFormat _calendarFormat = CalendarFormat.month;
-  DateTime _selectedDate = DateTime.now();
+  DateTime?
+      _selectedDate; // Alteração: Adicionado "?" para indicar que pode ser null
+  bool _profissionalSelecionado = false; // Nova variável
 
   List<String> _profissionais = [
+    'Selecione o profissional',
     'João (domésticos)',
     'Maria (domésticos)',
     'Rita (Silvestres)',
@@ -66,7 +69,7 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
               color: Color.fromARGB(255, 150, 57, 213),
               thickness: 1,
             ),
-            SizedBox(height: 20), // Espaçamento entre o Divider e o novo texto
+            SizedBox(height: 30),
             Text(
               'Profissional',
               style: TextStyle(
@@ -75,13 +78,15 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             DropdownButton<String>(
               value: _selectedProfissional,
               hint: Text('Selecione um profissional'),
               onChanged: (newValue) {
                 setState(() {
                   _selectedProfissional = newValue!;
+                  _profissionalSelecionado =
+                      true; // Alteração: Definir como true ao selecionar um profissional
                 });
               },
               items: _profissionais.map((profissional) {
@@ -92,30 +97,61 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
               }).toList(),
             ),
             SizedBox(height: 20),
-            Text(
-              'Selecione uma data',
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+            if (_profissionalSelecionado) // Nova condição para exibir o texto e o calendário somente se um profissional for selecionado
+              Column(
+                children: [
+                  Text(
+                    'Selecione a data',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  TableCalendar(
+                    firstDay: DateTime.now(),
+                    lastDay: DateTime.now().add(Duration(days: 365)),
+                    focusedDay: DateTime.now(),
+                    calendarFormat: _calendarFormat,
+                    selectedDayPredicate: (day) {
+                      // Verifica se o dia selecionado é igual à _selectedDate
+                      return isSameDay(day, _selectedDate);
+                    },
+                    onDaySelected: (selectedDay, focusedDay) {
+                      setState(() {
+                        _selectedDate = selectedDay;
+                      });
+                    },
+                  ),
+                  SizedBox(height: 50), // Espaço vazio abaixo do calendário
+                ],
               ),
-            ),
-            SizedBox(height: 10),
-            TableCalendar(
-              firstDay: DateTime.now(),
-              lastDay: DateTime(2025, 12, 31),
-              focusedDay: _selectedDate,
-              calendarFormat: _calendarFormat,
-              onFormatChanged: (format) {
-                setState(() {
-                  _calendarFormat = format;
-                });
-              },
-              onDaySelected: (selectedDay, focusedDay) {
-                setState(() {
-                  _selectedDate = selectedDay;
-                });
-              },
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 70.0),
+                child: ElevatedButton(
+                  onPressed: _selectedDate != null
+                      ? () {
+                          // Ação a ser executada ao clicar no botão
+                        }
+                      : null,
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 62, 52, 169),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    minimumSize: Size(170, 46.0),
+                  ),
+                  child: Text(
+                    'Próximo',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
