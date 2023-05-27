@@ -1,4 +1,10 @@
+import 'package:clinica_veterinaria1/tela_ajuda.dart';
+import 'package:clinica_veterinaria1/tela_consulta_emergencia.dart';
+import 'package:clinica_veterinaria1/tela_consultar_agendamentos.dart';
+import 'package:clinica_veterinaria1/tela_desmarcar_consulta.dart';
 import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_profissional.dart';
+import 'package:clinica_veterinaria1/tela_perfil.dart';
+import 'package:clinica_veterinaria1/tela_remarcar_consulta.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -36,7 +42,10 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
-                  // Lógica para tratar o clique no item 1 do menu
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Perfil()),
+                  ); // Lógica para tratar o clique no item 1 do menu
                 },
               ),
               Divider(color: Colors.black), // Linha separadora
@@ -48,7 +57,11 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
-                  // Lógica para tratar o clique no item 2 do menu
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ConsultaEmergencia()),
+                  ); // Lógica para tratar o clique no item 2 do menu
                 },
               ),
               Divider(color: Colors.black), // Linha separadora
@@ -76,7 +89,10 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
-                  // Lógica para tratar o clique no item 3 do menu
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RemarcarConsulta()),
+                  ); // Lógica para tratar o clique no item 3 do menu
                 },
               ),
               Divider(color: Colors.black), // Linha separadora
@@ -88,7 +104,11 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
-                  // Lógica para tratar o clique no item 3 do menu
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DesmarcarConsulta()),
+                  ); // Lógica para tratar o clique no item 3 do menu
                 },
               ),
               Divider(color: Colors.black), // Linha separadora
@@ -100,7 +120,11 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
-                  // Lógica para tratar o clique no item 3 do menu
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ConsultarAgendamentos()),
+                  ); // Lógica para tratar o clique no item 3 do menu
                 },
               ),
               Divider(color: Colors.black), // Linha separadora
@@ -112,7 +136,10 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
-                  // Lógica para tratar o clique no item 3 do menu
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Ajuda()),
+                  ); // Lógica para tratar o clique no item 3 do menu
                 },
               ),
             ],
