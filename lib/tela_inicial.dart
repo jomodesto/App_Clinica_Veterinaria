@@ -1,0 +1,305 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Tela Inicial',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 150, 57, 213),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications, color: Colors.black),
+            onPressed: () {
+              // Lógica para tratar o clique no botão de notificações
+            },
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: Color.fromARGB(255, 150, 57, 213),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              Container(
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 150, 57, 213),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.person, color: Colors.black),
+                title: Text('Perfil',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+                onTap: () {
+                  // Lógica para tratar o clique no item 1 do menu
+                },
+              ),
+              Divider(color: Colors.white), // Linha separadora
+              ListTile(
+                leading: Icon(Icons.local_hospital, color: Colors.black),
+                title: Text('Consulta de emergência',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+                onTap: () {
+                  // Lógica para tratar o clique no item 2 do menu
+                },
+              ),
+              Divider(color: Colors.white), // Linha separadora
+              ListTile(
+                leading: Icon(Icons.check_circle, color: Colors.black),
+                title: Text('Marcar consulta',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+                onTap: () {
+                  // Lógica para tratar o clique no item 3 do menu
+                },
+              ),
+              Divider(color: Colors.white), // Linha separadora
+              ListTile(
+                leading: Icon(Icons.edit, color: Colors.black),
+                title: Text('Remarcar consulta',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+                onTap: () {
+                  // Lógica para tratar o clique no item 3 do menu
+                },
+              ),
+              Divider(color: Colors.white), // Linha separadora
+              ListTile(
+                leading: Icon(Icons.cancel, color: Colors.black),
+                title: Text('Desmarcar consulta',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+                onTap: () {
+                  // Lógica para tratar o clique no item 3 do menu
+                },
+              ),
+              Divider(color: Colors.white), // Linha separadora
+              ListTile(
+                leading: Icon(Icons.calendar_today, color: Colors.black),
+                title: Text('Consultar agendamentos',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+                onTap: () {
+                  // Lógica para tratar o clique no item 3 do menu
+                },
+              ),
+              Divider(color: Colors.white), // Linha separadora
+              ListTile(
+                leading: Icon(Icons.help, color: Colors.black),
+                title: Text('Ajuda',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+                onTap: () {
+                  // Lógica para tratar o clique no item 3 do menu
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                'Conheça nossos serviços',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 62, 52, 169),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 20), // Espaçamento entre o texto e a linha
+            Container(
+              height: 1,
+              color: Color.fromARGB(255, 150, 57, 213), // Cor da linha
+            ),
+            SizedBox(height: 20), // Espaçamento entre os textos
+            Text(
+              'Atendimentos clínicos especializados em:',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 62, 52, 169),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20), // Espaçamento entre a linha e a imagem
+            Stack(
+              children: [
+                Container(
+                  height: 100,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/animaisdomesticos.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    color: Colors.black.withOpacity(0.5),
+                    padding: EdgeInsets.all(4),
+                    child: Text(
+                      'Animais Domésticos',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Stack(
+              children: [
+                Container(
+                  height: 100,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/animaissilvestres.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    color: Colors.black.withOpacity(0.5),
+                    padding: EdgeInsets.all(4),
+                    child: Text(
+                      'Animais Silvestres',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20), // Espaçamento entre os textos
+            Text(
+              'Também realizamos:',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 62, 52, 169),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20),
+            Stack(
+              children: [
+                Container(
+                  height: 100,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/cirurgias.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    color: Colors.black.withOpacity(0.5),
+                    padding: EdgeInsets.all(4),
+                    child: Text(
+                      'Cirurgias',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Stack(
+              children: [
+                Container(
+                  height: 100,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/raiox.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    color: Colors.black.withOpacity(0.5),
+                    padding: EdgeInsets.all(4),
+                    child: Text(
+                      'Raio-X',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

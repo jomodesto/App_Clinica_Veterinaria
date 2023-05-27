@@ -1,3 +1,4 @@
+import 'package:clinica_veterinaria1/tela_inicial.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -77,6 +78,11 @@ class _LoginPageState extends State<LoginPage> {
                 // e fazer login.
                 print('Email: $email');
                 print('Senha: $senha');
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                );
               },
               style: ButtonStyle(
                 backgroundColor:
