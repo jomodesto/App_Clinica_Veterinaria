@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
       ),
       drawer: Drawer(
         child: Container(
-          color: Color.fromARGB(255, 150, 57, 213),
+          color: Color.fromARGB(255, 255, 255, 255),
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
@@ -48,79 +48,79 @@ class HomeScreen extends StatelessWidget {
                 leading: Icon(Icons.person, color: Colors.black),
                 title: Text('Perfil',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
                   // Lógica para tratar o clique no item 1 do menu
                 },
               ),
-              Divider(color: Colors.white), // Linha separadora
+              Divider(color: Colors.black), // Linha separadora
               ListTile(
                 leading: Icon(Icons.local_hospital, color: Colors.black),
                 title: Text('Consulta de emergência',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
                   // Lógica para tratar o clique no item 2 do menu
                 },
               ),
-              Divider(color: Colors.white), // Linha separadora
+              Divider(color: Colors.black), // Linha separadora
               ListTile(
                 leading: Icon(Icons.check_circle, color: Colors.black),
                 title: Text('Marcar consulta',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
                   // Lógica para tratar o clique no item 3 do menu
                 },
               ),
-              Divider(color: Colors.white), // Linha separadora
+              Divider(color: Colors.black), // Linha separadora
               ListTile(
                 leading: Icon(Icons.edit, color: Colors.black),
                 title: Text('Remarcar consulta',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
                   // Lógica para tratar o clique no item 3 do menu
                 },
               ),
-              Divider(color: Colors.white), // Linha separadora
+              Divider(color: Colors.black), // Linha separadora
               ListTile(
                 leading: Icon(Icons.cancel, color: Colors.black),
                 title: Text('Desmarcar consulta',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
                   // Lógica para tratar o clique no item 3 do menu
                 },
               ),
-              Divider(color: Colors.white), // Linha separadora
+              Divider(color: Colors.black), // Linha separadora
               ListTile(
                 leading: Icon(Icons.calendar_today, color: Colors.black),
                 title: Text('Consultar agendamentos',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
                   // Lógica para tratar o clique no item 3 do menu
                 },
               ),
-              Divider(color: Colors.white), // Linha separadora
+              Divider(color: Colors.black), // Linha separadora
               ListTile(
                 leading: Icon(Icons.help, color: Colors.black),
                 title: Text('Ajuda',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 onTap: () {
@@ -151,7 +151,7 @@ class HomeScreen extends StatelessWidget {
               height: 1,
               color: Color.fromARGB(255, 150, 57, 213), // Cor da linha
             ),
-            SizedBox(height: 20), // Espaçamento entre os textos
+            SizedBox(height: 10), // Espaçamento entre os textos
             Text(
               'Atendimentos clínicos especializados em:',
               style: TextStyle(
@@ -160,7 +160,16 @@ class HomeScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20), // Espaçamento entre a linha e a imagem
+            SizedBox(height: 10), // Espaçamento entre os textos
+            Text(
+              'Animais domésticos',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 62, 52, 169),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10), // Espaçamento entre a linha e a imagem
             Stack(
               children: [
                 Container(
@@ -173,26 +182,18 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    color: Colors.black.withOpacity(0.5),
-                    padding: EdgeInsets.all(4),
-                    child: Text(
-                      'Animais Domésticos',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10), // Espaçamento entre os textos
+            Text(
+              'Animais silvestres',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 62, 52, 169),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
             Stack(
               children: [
                 Container(
@@ -205,28 +206,20 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    color: Colors.black.withOpacity(0.5),
-                    padding: EdgeInsets.all(4),
-                    child: Text(
-                      'Animais Silvestres',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
-            SizedBox(height: 20), // Espaçamento entre os textos
+            SizedBox(height: 10), // Espaçamento entre os textos
             Text(
               'Também realizamos:',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 62, 52, 169),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10), // Espaçamento entre os textos
+            Text(
+              'Cirurgias',
               style: TextStyle(
                 fontSize: 16,
                 color: Color.fromARGB(255, 62, 52, 169),
@@ -246,24 +239,16 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    color: Colors.black.withOpacity(0.5),
-                    padding: EdgeInsets.all(4),
-                    child: Text(
-                      'Cirurgias',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ),
-                ),
               ],
+            ),
+            SizedBox(height: 10), // Espaçamento entre os textos
+            Text(
+              'Raio-X',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 62, 52, 169),
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(height: 20),
             Stack(
@@ -275,23 +260,6 @@ class HomeScreen extends StatelessWidget {
                     image: DecorationImage(
                       image: AssetImage('assets/raiox.jpg'),
                       fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    color: Colors.black.withOpacity(0.5),
-                    padding: EdgeInsets.all(4),
-                    child: Text(
-                      'Raio-X',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
-                      ),
                     ),
                   ),
                 ),
