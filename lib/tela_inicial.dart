@@ -164,7 +164,7 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Animais domésticos',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 13,
                 color: Color.fromARGB(255, 62, 52, 169),
                 fontWeight: FontWeight.bold,
               ),
@@ -188,7 +188,7 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Animais silvestres',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 13,
                 color: Color.fromARGB(255, 62, 52, 169),
                 fontWeight: FontWeight.bold,
               ),
@@ -212,7 +212,7 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Também realizamos:',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 13,
                 color: Color.fromARGB(255, 62, 52, 169),
                 fontWeight: FontWeight.bold,
               ),
@@ -221,12 +221,12 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Cirurgias',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 13,
                 color: Color.fromARGB(255, 62, 52, 169),
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Stack(
               children: [
                 Container(
@@ -245,12 +245,12 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Raio-X',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 13,
                 color: Color.fromARGB(255, 62, 52, 169),
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Stack(
               children: [
                 Container(
