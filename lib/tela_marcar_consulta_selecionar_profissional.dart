@@ -1,3 +1,4 @@
+import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_data.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -136,7 +137,11 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
                 child: ElevatedButton(
                   onPressed: _selectedDate != null
                       ? () {
-                          // Ação a ser executada ao clicar no botão
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MarcarConsultaData()),
+                          );
                         }
                       : null,
                   style: ElevatedButton.styleFrom(

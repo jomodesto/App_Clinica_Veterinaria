@@ -1,4 +1,5 @@
 import 'package:clinica_veterinaria1/tela_ajuda.dart';
+import 'package:clinica_veterinaria1/tela_cadastrar_animal.dart';
 import 'package:clinica_veterinaria1/tela_consulta_emergencia.dart';
 import 'package:clinica_veterinaria1/tela_consultar_agendamentos.dart';
 import 'package:clinica_veterinaria1/tela_desmarcar_consulta.dart';
@@ -44,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Perfil()),
+                    MaterialPageRoute(builder: (context) => CadastrarAnimal()),
                   ); // Lógica para tratar o clique no item 1 do menu
                 },
               ),
