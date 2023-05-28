@@ -166,6 +166,28 @@ class MarcarConsultaData extends StatelessWidget {
             ),
           ),
           Spacer(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                // Código para lidar com o botão "Próximo"
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Color.fromARGB(255, 62, 52, 169),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                minimumSize: Size(170, 46),
+              ),
+              child: Text(
+                'Próximo',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
