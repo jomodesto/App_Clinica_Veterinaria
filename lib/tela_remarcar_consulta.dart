@@ -1,24 +1,31 @@
+import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_profissional.dart';
 import 'package:flutter/material.dart';
 
-class RemarcarConsulta extends StatelessWidget {
-  final List<Agendamento> agendamentos = [
-    Agendamento(
-      paciente: 'João da Silva',
+class RemarcarConsulta extends StatefulWidget {
+  @override
+  _RemarcarConsultaState createState() => _RemarcarConsultaState();
+}
+
+class _RemarcarConsultaState extends State<RemarcarConsulta> {
+  int? selectedIndex;
+  final List<Remarcar> remarcarConsultas = [
+    Remarcar(
+      paciente: 'Linda',
       data: '25/05/2023',
       hora: '14:30',
       medico: 'Dr. João',
     ),
-    Agendamento(
-      paciente: 'Maria Oliveira',
+    Remarcar(
+      paciente: 'Linda',
       data: '27/05/2023',
       hora: '09:00',
       medico: 'Dr. Maria',
     ),
-    Agendamento(
-      paciente: 'Pedro Santos',
+    Remarcar(
+      paciente: 'Mel',
       data: '30/05/2023',
       hora: '16:45',
-      medico: 'Dr. Pedro',
+      medico: 'Dr. Rita',
     ),
   ];
 
@@ -58,98 +65,121 @@ class RemarcarConsulta extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: agendamentos.length,
+              itemCount: remarcarConsultas.length,
               itemBuilder: (context, index) {
-                final agendamento = agendamentos[index];
+                final remarcarConsulta = remarcarConsultas[index];
                 return GestureDetector(
                   onTap: () {
-                    _mostrarDetalhes(context, agendamento);
+                    setState(() {
+                      selectedIndex = index;
+                    });
                   },
                   child: Card(
                     child: ListTile(
                       title: Text(
-                        'Paciente: ${agendamento.paciente}',
+                        'Paciente: ${remarcarConsulta.paciente}',
                         style: TextStyle(fontSize: 25),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Data: ${agendamento.data}',
+                            'Data: ${remarcarConsulta.data}',
                             style: TextStyle(fontSize: 20),
                           ),
                           Text(
-                            'Hora: ${agendamento.hora}',
+                            'Hora: ${remarcarConsulta.hora}',
                             style: TextStyle(fontSize: 20),
                           ),
                           Text(
-                            'Médico: ${agendamento.medico}',
+                            'Médico: ${remarcarConsulta.medico}',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
                       ),
-                      trailing: Icon(Icons.remove_red_eye),
+                      trailing: selectedIndex == index
+                          ? Icon(Icons.radio_button_checked)
+                          : Icon(Icons.radio_button_unchecked),
                     ),
                   ),
                 );
               },
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                if (selectedIndex != null) {
+                  final selectedConsulta = remarcarConsultas[selectedIndex!];
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MarcarConsulta(),
+                    ),
+                  );
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Erro'),
+                        content: Text(
+                            'É necessário selecionar ao menos uma consulta para prosseguir.'),
+                        actions: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromARGB(255, 62, 52, 169),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: Text(
+                              'OK',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Color.fromARGB(255, 62, 52, 169),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                minimumSize: Size(170, 46),
+              ),
+              child: Text(
+                'Próximo',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
-
-  void _mostrarDetalhes(BuildContext context, Agendamento agendamento) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Detalhes da Consulta', style: TextStyle(fontSize: 20)),
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Paciente: ${agendamento.paciente}',
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(height: 15),
-              Text(
-                'Data: ${agendamento.data}',
-                style: TextStyle(fontSize: 18),
-              ),
-              Text(
-                'Hora: ${agendamento.hora}',
-                style: TextStyle(fontSize: 18),
-              ),
-              Text(
-                'Médico: ${agendamento.medico}',
-                style: TextStyle(fontSize: 18),
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Fechar', style: TextStyle(fontSize: 18)),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 }
 
-class Agendamento {
+class Remarcar {
   final String paciente;
   final String data;
   final String hora;
   final String medico;
 
-  Agendamento({
+  Remarcar({
     required this.paciente,
     required this.data,
     required this.hora,
