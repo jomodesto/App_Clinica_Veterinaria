@@ -16,7 +16,18 @@ class ConsultarAgendamentos extends StatelessWidget {
           onPressed: () => Navigator.pop(context, false),
         ),
       ),
-      body: Container(),
+      body: Container(
+        alignment: Alignment.topCenter,
+        padding: EdgeInsets.only(top: 30),
+        child: Text(
+          'Consultar Agendamentos',
+          style: TextStyle(
+            fontSize: 30,
+            color: Color.fromARGB(255, 62, 52, 169),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }
