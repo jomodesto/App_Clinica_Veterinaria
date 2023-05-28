@@ -28,34 +28,35 @@ class Ajuda extends StatelessWidget {
         ),
       ),
       body: Container(
-        child: Center(
-          child: ElevatedButton.icon(
-            onPressed: _launchUrl,
-            icon: Icon(
-              Icons.message,
-              color: Colors.white,
-            ),
-            label: Text(
-              'Abrir WhatsApp',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+        child: Stack(
+          children: [
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 200,
+                    height: 250,
+                    child: Image.asset("assets/wpp.png"),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    "Para redirecionarmos você para nosso WhatsApp de emergência, toque no botão acima.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
               ),
             ),
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(
-                Color.fromARGB(255, 37, 211, 102),
-              ),
-              padding: MaterialStateProperty.all<EdgeInsets>(
-                EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              ),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
+            Positioned.fill(
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: _launchUrl,
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
