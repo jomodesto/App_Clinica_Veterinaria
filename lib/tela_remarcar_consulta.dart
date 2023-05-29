@@ -2,7 +2,10 @@ import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_profissiona
 import 'package:flutter/material.dart';
 
 class RemarcarConsulta extends StatefulWidget {
+  const RemarcarConsulta({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _RemarcarConsultaState createState() => _RemarcarConsultaState();
 }
 
@@ -33,9 +36,9 @@ class _RemarcarConsultaState extends State<RemarcarConsulta> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 150, 57, 213),
+        backgroundColor: const Color.fromARGB(255, 150, 57, 213),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.chevron_left,
             size: 40,
           ),
@@ -46,8 +49,8 @@ class _RemarcarConsultaState extends State<RemarcarConsulta> {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 30),
-            child: Text(
+            padding: const EdgeInsets.only(top: 30),
+            child: const Text(
               'Remarcar Consulta',
               style: TextStyle(
                 fontSize: 30,
@@ -56,11 +59,11 @@ class _RemarcarConsultaState extends State<RemarcarConsulta> {
               ),
             ),
           ),
-          Divider(
+          const Divider(
             color: Color.fromARGB(255, 150, 57, 213),
             thickness: 1,
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Expanded(
@@ -78,28 +81,28 @@ class _RemarcarConsultaState extends State<RemarcarConsulta> {
                     child: ListTile(
                       title: Text(
                         'Paciente: ${remarcarConsulta.paciente}',
-                        style: TextStyle(fontSize: 25),
+                        style: const TextStyle(fontSize: 25),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Data: ${remarcarConsulta.data}',
-                            style: TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 20),
                           ),
                           Text(
                             'Hora: ${remarcarConsulta.hora}',
-                            style: TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 20),
                           ),
                           Text(
                             'Médico: ${remarcarConsulta.medico}',
-                            style: TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 20),
                           ),
                         ],
                       ),
                       trailing: selectedIndex == index
-                          ? Icon(Icons.radio_button_checked)
-                          : Icon(Icons.radio_button_unchecked),
+                          ? const Icon(Icons.radio_button_checked)
+                          : const Icon(Icons.radio_button_unchecked),
                     ),
                   ),
                 );
@@ -111,7 +114,6 @@ class _RemarcarConsultaState extends State<RemarcarConsulta> {
             child: ElevatedButton(
               onPressed: () {
                 if (selectedIndex != null) {
-                  final selectedConsulta = remarcarConsultas[selectedIndex!];
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -123,8 +125,8 @@ class _RemarcarConsultaState extends State<RemarcarConsulta> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Erro'),
-                        content: Text(
+                        title: const Text('Erro'),
+                        content: const Text(
                             'É necessário selecionar ao menos uma consulta para prosseguir.'),
                         actions: [
                           ElevatedButton(
@@ -132,12 +134,12 @@ class _RemarcarConsultaState extends State<RemarcarConsulta> {
                               Navigator.pop(context);
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color.fromARGB(255, 62, 52, 169),
+                              primary: const Color.fromARGB(255, 62, 52, 169),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
                             ),
-                            child: Text(
+                            child: const Text(
                               'OK',
                               style: TextStyle(
                                 fontSize: 20.0,
@@ -152,13 +154,13 @@ class _RemarcarConsultaState extends State<RemarcarConsulta> {
                 }
               },
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 62, 52, 169),
+                primary: const Color.fromARGB(255, 62, 52, 169),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
-                minimumSize: Size(170, 46),
+                minimumSize: const Size(170, 46),
               ),
-              child: Text(
+              child: const Text(
                 'Próximo',
                 style: TextStyle(
                   fontSize: 20.0,

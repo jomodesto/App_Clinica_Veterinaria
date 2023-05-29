@@ -1,5 +1,4 @@
 import 'package:clinica_veterinaria1/tela_bem_vindo.dart';
-import 'package:clinica_veterinaria1/tela_cadastrar_animal.dart';
 import 'package:flutter/material.dart';
 
 //import 'tela_bem_vindo.dart';

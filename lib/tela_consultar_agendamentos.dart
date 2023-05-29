@@ -1,24 +1,33 @@
+import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_profissional.dart';
 import 'package:flutter/material.dart';
 
-class ConsultarAgendamentos extends StatelessWidget {
+class ConsultarAgendamentos extends StatefulWidget {
+  const ConsultarAgendamentos({Key? key}) : super(key: key);
+
+  @override
+  _ConsultarAgendamentosState createState() => _ConsultarAgendamentosState();
+}
+
+class _ConsultarAgendamentosState extends State<ConsultarAgendamentos> {
+  int? selectedIndex;
   final List<Agendamento> agendamentos = [
     Agendamento(
-      paciente: 'João da Silva',
+      paciente: 'Linda',
       data: '25/05/2023',
       hora: '14:30',
       medico: 'Dr. João',
     ),
     Agendamento(
-      paciente: 'Maria Oliveira',
+      paciente: 'Linda',
       data: '27/05/2023',
       hora: '09:00',
       medico: 'Dr. Maria',
     ),
     Agendamento(
-      paciente: 'Pedro Santos',
+      paciente: 'Mel',
       data: '30/05/2023',
       hora: '16:45',
-      medico: 'Dr. Pedro',
+      medico: 'Dr. Rita',
     ),
   ];
 
@@ -26,9 +35,9 @@ class ConsultarAgendamentos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 150, 57, 213),
+        backgroundColor: const Color.fromARGB(255, 150, 57, 213),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.chevron_left,
             size: 40,
           ),
@@ -39,8 +48,8 @@ class ConsultarAgendamentos extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 30),
-            child: Text(
+            padding: const EdgeInsets.only(top: 30),
+            child: const Text(
               'Consultar Agendamentos',
               style: TextStyle(
                 fontSize: 30,
@@ -49,11 +58,11 @@ class ConsultarAgendamentos extends StatelessWidget {
               ),
             ),
           ),
-          Divider(
+          const Divider(
             color: Color.fromARGB(255, 150, 57, 213),
             thickness: 1,
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Expanded(
@@ -63,82 +72,172 @@ class ConsultarAgendamentos extends StatelessWidget {
                 final agendamento = agendamentos[index];
                 return GestureDetector(
                   onTap: () {
-                    _mostrarDetalhes(context, agendamento);
+                    setState(() {
+                      selectedIndex = index;
+                    });
                   },
                   child: Card(
                     child: ListTile(
                       title: Text(
                         'Paciente: ${agendamento.paciente}',
-                        style: TextStyle(fontSize: 25),
+                        style: const TextStyle(fontSize: 25),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Data: ${agendamento.data}',
-                            style: TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 20),
                           ),
                           Text(
                             'Hora: ${agendamento.hora}',
-                            style: TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 20),
                           ),
                           Text(
                             'Médico: ${agendamento.medico}',
-                            style: TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 20),
                           ),
                         ],
                       ),
-                      trailing: Icon(Icons.remove_red_eye),
+                      trailing: selectedIndex == index
+                          ? const Icon(Icons.radio_button_checked)
+                          : const Icon(Icons.radio_button_unchecked),
                     ),
                   ),
                 );
               },
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                if (selectedIndex != null) {
+                  final agendamentoSelecionado = agendamentos[selectedIndex!];
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Row(
+                          children: [
+                            const Text('Consulta Agendada'),
+                            const Spacer(),
+                            IconButton(
+                              icon: const Icon(Icons.close),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        ),
+                        content: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                                'Paciente: ${agendamentoSelecionado.paciente}'),
+                            Text('Data: ${agendamentoSelecionado.data}'),
+                            Text('Hora: ${agendamentoSelecionado.hora}'),
+                            Text('Médico: ${agendamentoSelecionado.medico}'),
+                          ],
+                        ),
+                        actions: [
+                          ElevatedButton(
+                            onPressed: () {
+                              // Ação do botão 1
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromARGB(255, 62, 52, 169),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text(
+                              'Desmarcar',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MarcarConsulta(),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromARGB(255, 150, 57, 213),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text(
+                              'Remarcar',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Erro'),
+                        content: const Text(
+                            'É necessário selecionar ao menos uma consulta para prosseguir.'),
+                        actions: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: const Color.fromARGB(255, 62, 52, 169),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                primary: const Color.fromARGB(255, 62, 52, 169),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                minimumSize: const Size(170, 46),
+              ),
+              child: const Text(
+                'Consultar',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
-    );
-  }
-
-  void _mostrarDetalhes(BuildContext context, Agendamento agendamento) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Detalhes da Consulta', style: TextStyle(fontSize: 20)),
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Paciente: ${agendamento.paciente}',
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(height: 15),
-              Text(
-                'Data: ${agendamento.data}',
-                style: TextStyle(fontSize: 18),
-              ),
-              Text(
-                'Hora: ${agendamento.hora}',
-                style: TextStyle(fontSize: 18),
-              ),
-              Text(
-                'Médico: ${agendamento.medico}',
-                style: TextStyle(fontSize: 18),
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Fechar', style: TextStyle(fontSize: 18)),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }
