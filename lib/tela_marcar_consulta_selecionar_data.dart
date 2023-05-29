@@ -1,3 +1,4 @@
+import 'package:clinica_veterinaria1/tela_cadastrar_animal.dart';
 import 'package:flutter/material.dart';
 
 class MarcarConsultaData extends StatefulWidget {
@@ -20,11 +21,33 @@ class _MarcarConsultaDataState extends State<MarcarConsultaData> {
   int selectedAnimalIndex = 0; // Nova variável
 
   List<String> animalOptions = [
-    'Cachorro',
-    'Gato',
-    'Coelho',
-    'Pássaro',
+    'Selecione o animal',
+    'Mel',
+    'Linda',
+    'Bil',
   ]; // Nova lista de opções
+
+  String selectedAnimalOption = 'Selecione o animal'; // Nova variável
+
+  void marcarConsulta() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Consulta marcada'),
+          content: Text('A consulta foi marcada com sucesso.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +95,7 @@ class _MarcarConsultaDataState extends State<MarcarConsultaData> {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 30),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
@@ -225,7 +248,7 @@ class _MarcarConsultaDataState extends State<MarcarConsultaData> {
               ],
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 30),
           Center(
             child: Text(
               'Selecionar o animal que será consultado:',
@@ -236,56 +259,119 @@ class _MarcarConsultaDataState extends State<MarcarConsultaData> {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: animalOptions.length,
-              itemBuilder: (context, index) {
-                return RadioListTile<int>(
-                  value: index,
-                  groupValue: selectedAnimalIndex,
-                  onChanged: (int? newValue) {
-                    setState(() {
-                      selectedAnimalIndex = newValue!;
-                    });
+            child: Container(
+              height: 40,
+              alignment: Alignment.center,
+              child: DropdownButton<String>(
+                value: selectedAnimalOption,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedAnimalOption = newValue!;
+                  });
+                },
+                items: animalOptions.map<DropdownMenuItem<String>>(
+                  (String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
                   },
-                  title: Text(animalOptions[index]),
-                );
-              },
+                ).toList(),
+              ),
             ),
           ),
-          Spacer(),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Container(
-                width: 170,
-                height: 46,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Código para lidar com o botão "Próximo"
+          SizedBox(height: 20),
+          Center(
+            child: Text(
+              'ou',
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(height: 30),
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.add_circle,
+                  color: Color.fromARGB(255, 62, 52, 169),
+                ),
+                SizedBox(width: 5),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CadastrarAnimal()),
+                    );
                   },
+                  child: Text(
+                    'Cadastrar mais animais',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 62, 52, 169),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 30.0),
+                child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(255, 62, 52, 169),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(30),
                     ),
+                    minimumSize: Size(170, 46.0),
                   ),
                   child: Text(
-                    'Próximo',
+                    'Marcar',
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
                     ),
                   ),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Consulta marcada com sucesso!'),
+                          content: Text(
+                              'Aguardamos você e seu pet no dia e horário selecionados'),
+                          actions: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color.fromARGB(255, 62, 52,
+                                    169), // Nova cor de fundo do botão
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Voltar para o Menu Inicial'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
             ),
           ),
-          SizedBox(height: 20),
         ],
       ),
     );
@@ -294,6 +380,7 @@ class _MarcarConsultaDataState extends State<MarcarConsultaData> {
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: MarcarConsultaData(),
   ));
 }

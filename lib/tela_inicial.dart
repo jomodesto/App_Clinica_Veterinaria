@@ -4,7 +4,6 @@ import 'package:clinica_veterinaria1/tela_consulta_emergencia.dart';
 import 'package:clinica_veterinaria1/tela_consultar_agendamentos.dart';
 import 'package:clinica_veterinaria1/tela_desmarcar_consulta.dart';
 import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_profissional.dart';
-import 'package:clinica_veterinaria1/tela_perfil.dart';
 import 'package:clinica_veterinaria1/tela_remarcar_consulta.dart';
 import 'package:flutter/material.dart';
 
