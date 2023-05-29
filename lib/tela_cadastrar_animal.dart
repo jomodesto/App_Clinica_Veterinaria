@@ -1,34 +1,15 @@
 import 'package:flutter/material.dart';
 
-//class MeuApp extends StatelessWidget {
-//
-//  //final title;
-//
-//  //const MeuApp({super.key, required this.title});
-//
-//
-// @override
-//  Widget build(BuildContext context) {
-//    return MaterialApp(
-//      title: "title",
-//      theme: ThemeData(
-//        primarySwatch: Colors.blue,
-//      ),
-//      home: CadastrarAnimal(),
-//    );
-//  }
-//}
-
 class CadastrarAnimal extends StatefulWidget {
-  const CadastrarAnimal({super.key});
+  const CadastrarAnimal({Key? key});
 
   @override
   State<CadastrarAnimal> createState() => CadastrarAnimalState();
 }
 
 class CadastrarAnimalState extends State<CadastrarAnimal> {
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _telefoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _telefoneController = TextEditingController();
   //TextEditingController _nomeController = TextEditingController();
   //TextEditingController _racaController = TextEditingController();
   //TextEditingController _especieController = TextEditingController();
@@ -39,10 +20,10 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
     String nome = "Maria";
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 139, 65, 203),
+        backgroundColor: const Color.fromARGB(255, 139, 65, 203),
         automaticallyImplyLeading: true,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.chevron_left,
             size: 40,
           ),
@@ -50,53 +31,97 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
           onPressed: () => Navigator.pop(context, false),
         ),
       ),
-      body: Container(
-          child: ListView(
+      body: ListView(
         children: [
           Align(
             alignment: Alignment.topCenter,
             child: Text(
               nome,
-              style: TextStyle(
-                fontSize: 24,
+              style: const TextStyle(
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 139, 65, 203),
               ),
             ),
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 4.0),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 80.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                Align(
+                const SizedBox(height: 0.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                        Icons.person,
+                        size: 32,
+                      ),
+                    ),
+                  ],
+                ),
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: Text('E-mail:'),
                 ),
                 TextField(
                   keyboardType: TextInputType.emailAddress,
                   controller: _emailController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'maria_h@outlook.com',
                     border: OutlineInputBorder(),
                   ),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: Text('Telefone'),
                 ),
-                TextField(
-                  keyboardType: TextInputType.phone,
-                  controller: _telefoneController,
-                  decoration: InputDecoration(
-                    hintText: 'Cadastre um telefone',
-                    border: OutlineInputBorder(),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        keyboardType: TextInputType.phone,
+                        controller: _telefoneController,
+                        decoration: const InputDecoration(
+                          hintText: 'Cadastre um telefone',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      //padding: const EdgeInsets.all(0.0),
+                      child: IconButton(
+                        icon: const Icon(Icons.edit),
+                        onPressed: () {
+                          // Implemente o código para a ação do botão "edit" aqui
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Verificamos que ainda não possuem animais cadastrados",
+                    style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 139, 65, 203),
+                    ),
                   ),
+                ),
+                const SizedBox(height: 16.0), // Espaçamento entre os widgets
+                Container(
+                  // Adicione os atributos desejados para o novo Container
+                  child: const Text("Outro Container"),
                 ),
               ],
             ),
           ),
         ],
-      )),
+      ),
     );
   }
 }
