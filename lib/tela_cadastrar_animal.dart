@@ -10,6 +10,12 @@ class CadastrarAnimal extends StatefulWidget {
 class CadastrarAnimalState extends State<CadastrarAnimal> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _telefoneController = TextEditingController();
+  bool _adicionarAnimais = false;
+  String _nomeAnimal = '';
+  String _especieAnimal = '';
+  String _porteAnimal = '';
+  String _racaAnimal = '';
+  bool _cadastroRealizado = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +59,7 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                       children: [
                         Container(
                           padding: const EdgeInsets.all(8.0),
-                          child: const Icon(
+                          child: Icon(
                             Icons.person,
                             size: 32,
                           ),
@@ -74,7 +80,7 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color.fromARGB(255, 139, 65, 203),
                             ),
                             borderRadius: BorderRadius.circular(10.0),
@@ -85,9 +91,13 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                             ),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 8.0,
+                              horizontal:
+                                  16.0), // Ajuste o valor do padding conforme necessário
                         ),
-                        style: const TextStyle(
-                          fontSize: 12.0, // Defina o tamanho de fonte desejado
+                        style: TextStyle(
+                          fontSize: 16.0,
                         ),
                       ),
                     ),
@@ -109,7 +119,7 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color.fromARGB(255, 139, 65, 203),
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
@@ -120,9 +130,8 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
-                              ),
-                              style: const TextStyle(
-                                fontSize: 12.0, // Defina o tamanho de fonte desejado
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 8.0, horizontal: 16.0),
                               ),
                             ),
                           ),
@@ -137,11 +146,115 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 80.0),
-                    const Center(
+                    const SizedBox(height: 20.0),
+                    if (_adicionarAnimais) ...[
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Cadastrar Animal',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Color.fromARGB(255, 62, 52, 203),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Divider(
+                        color: Color.fromARGB(255, 150, 57, 213),
+                        thickness: 1,
+                      ),
+                      SizedBox(height: 20),
+                      TextField(
+                        decoration: InputDecoration(
+                          labelText: "Nome",
+                          hintText: 'Informe o nome do animal',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 16.0),
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            _nomeAnimal = value;
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10.0),
+                      DropdownButtonFormField<String>(
+                        decoration: InputDecoration(
+                          labelText: 'Espécie',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 16.0),
+                        ),
+                        items:
+                            ['Cachorro', 'Gato', 'Outro'].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            _especieAnimal = value!;
+                          });
+                        },
+                        value:
+                            _especieAnimal.isNotEmpty ? _especieAnimal : null,
+                      ),
+                      const SizedBox(height: 10.0),
+                      DropdownButtonFormField<String>(
+                        decoration: InputDecoration(
+                          labelText: 'Porte',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 16.0),
+                        ),
+                        items:
+                            ['Pequeno', 'Médio', 'Grande'].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            _porteAnimal = value!;
+                          });
+                        },
+                        value: _porteAnimal.isNotEmpty ? _porteAnimal : null,
+                      ),
+                      const SizedBox(height: 10.0),
+                      TextField(
+                        decoration: InputDecoration(
+                          labelText: "Raça",
+                          hintText: 'Informe a raça do animal',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 16.0),
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            _racaAnimal = value;
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 20.0),
+                    ],
+                    SizedBox(height: 70),
+                    Center(
                       child: Text(
-                        "Verificamos que ainda não possuem animais cadastrados",
-                        style: TextStyle(
+                        _adicionarAnimais
+                            ? ""
+                            : 'Verificamos que ainda não possuem animais cadastrados',
+                        style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 62, 52, 203),
@@ -154,13 +267,15 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
             ],
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height / 1.5 - 60,
-            left: 40.0,
+            top: MediaQuery.of(context).size.height / 1.3 - 60,
+            left: 20.0,
             child: Row(
               children: [
                 FloatingActionButton(
                   onPressed: () {
-                    // Implemente o código para a ação do botão "Adicionar" aqui
+                    setState(() {
+                      _adicionarAnimais = true;
+                    });
                   },
                   mini: true, // Define o botão como miniatura
                   backgroundColor: Colors.white,
@@ -192,17 +307,56 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
               margin: const EdgeInsets.only(bottom: 20.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Implemente o código para a ação do botão "Entrar" aqui
+                  if (_emailController.text.isNotEmpty &&
+                      _telefoneController.text.isNotEmpty &&
+                      _nomeAnimal.isNotEmpty &&
+                      _especieAnimal.isNotEmpty &&
+                      _porteAnimal.isNotEmpty &&
+                      _racaAnimal.isNotEmpty) {
+                    // Validar todos os campos preenchidos e exibir o modal de "Cadastro realizado com sucesso"
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text('Cadastro realizado com sucesso'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Fechar'),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    // Exibir mensagem de erro caso algum campo esteja vazio
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text('Erro no cadastro'),
+                        content: const Text('Por favor, preencha todos os campos obrigatórios.'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Fechar'),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Color.fromARGB(255, 62, 52, 169), // Cor roxa
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  minimumSize: const Size(200.0, 50.0), // Largura e altura do botão
+                  minimumSize:
+                      const Size(200.0, 50.0), // Largura e altura do botão
                 ),
                 child: const Text(
-                  'Entrar',
+                  'Cadastrar',
                   style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.white,
