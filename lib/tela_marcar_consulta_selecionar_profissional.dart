@@ -73,7 +73,7 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
               color: Color.fromARGB(255, 150, 57, 213),
               thickness: 1,
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 15),
             Text(
               'Profissional',
               style: TextStyle(
@@ -82,7 +82,7 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             DropdownButton<String>(
               value: _selectedProfissional,
               hint: Text('Selecione um profissional'),
@@ -100,7 +100,7 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
                 );
               }).toList(),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             if (_profissionalSelecionado) // Nova condição para exibir o texto e o calendário somente se um profissional for selecionado
               Column(
                 children: [
@@ -112,7 +112,7 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   TableCalendar(
                     firstDay: DateTime.now(),
                     lastDay: DateTime.now().add(Duration(days: 365)),
@@ -128,7 +128,7 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
                       });
                     },
                   ),
-                  SizedBox(height: 50), // Espaço vazio abaixo do calendário
+                  SizedBox(height: 15), // Espaço vazio abaixo do calendário
                 ],
               ),
             Container(
