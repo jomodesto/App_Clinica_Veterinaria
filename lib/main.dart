@@ -1,6 +1,7 @@
+import 'package:clinica_veterinaria1/tela_bem_vindo.dart';
 import 'package:flutter/material.dart';
 
-import 'tela_bem_vindo.dart';
+//import 'tela_bem_vindo.dart';
 
 void main() => runApp(MyApp());
 
