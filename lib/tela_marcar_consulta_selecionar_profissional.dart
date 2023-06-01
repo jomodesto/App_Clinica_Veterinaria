@@ -1,3 +1,4 @@
+import 'package:clinica_veterinaria1/tela_inicial.dart';
 import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_data.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -46,13 +47,15 @@ class _SelecionarProfissionalState extends State<SelecionarProfissional> {
         backgroundColor: Color.fromARGB(255, 150, 57, 213),
         actions: [],
         leading: IconButton(
-          icon: Icon(
-            Icons.chevron_left,
-            size: 40,
-          ),
-          color: Colors.black38,
-          onPressed: () => Navigator.pop(context, false),
-        ),
+            icon: Icon(
+              Icons.chevron_left,
+              size: 40,
+            ),
+            color: Colors.black38,
+            onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                )),
       ),
       body: Align(
         alignment: Alignment.topCenter,
