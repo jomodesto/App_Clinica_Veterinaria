@@ -1,4 +1,5 @@
 import 'package:clinica_veterinaria1/tela_cadastrar_animal.dart';
+import 'package:clinica_veterinaria1/tela_inicial.dart';
 import 'package:flutter/material.dart';
 
 class MarcarConsultaData extends StatefulWidget {
@@ -359,7 +360,11 @@ class _MarcarConsultaDataState extends State<MarcarConsultaData> {
                                     169), // Nova cor de fundo do botão
                               ),
                               onPressed: () {
-                                Navigator.of(context).pop();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()),
+                                );
                               },
                               child: Text('Voltar para o Menu Inicial'),
                             ),
