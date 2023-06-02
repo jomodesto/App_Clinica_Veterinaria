@@ -6,6 +6,7 @@ import 'package:clinica_veterinaria1/tela_desmarcar_consulta.dart';
 import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_profissional.dart';
 import 'package:clinica_veterinaria1/tela_remarcar_consulta.dart';
 import 'package:flutter/material.dart';
+import 'tela_animais_não_cadastrados.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -44,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CadastrarAnimal()),
+                    MaterialPageRoute(builder: (context) => AnimalNaoCadastrado()),
                   ); // Lógica para tratar o clique no item 1 do menu
                 },
               ),

@@ -1,3 +1,4 @@
+import 'package:clinica_veterinaria1/tela_perfil.dart';
 import 'package:flutter/material.dart';
 import 'package:clinica_veterinaria1/tela_inicial.dart';
 
@@ -22,7 +23,6 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
     super.initState();
     _emailController.text = 'maria_h@outlook.com'; // Definir o e-mail fixo aqui
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +155,7 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                       ),
                     ),
                     const SizedBox(height: 20.0),
-                    if (_adicionarAnimais) ...[
+                    
                       const Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -254,21 +254,7 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                           });
                         },
                       ),
-                      const SizedBox(height: 20.0),
-                    ],
-                    SizedBox(height: 70),
-                    Center(
-                      child: Text(
-                        _adicionarAnimais
-                            ? ""
-                            : 'Verificamos que ainda não possuem animais cadastrados',
-                        style: const TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 62, 52, 203),
-                        ),
-                      ),
-                    ),
+                      const SizedBox(height: 20.0),                                      
                   ],
                 ),
               ),
@@ -326,37 +312,50 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Consulta marcada com sucesso!'),
-                          
+                          title: const Text('Animal cadastrado sucesso!'),
                           actions: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Color.fromARGB(255, 62, 52,
-                                    169), // Nova cor de fundo do botão
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomeScreen()),
-                                );
-                              },
-                              child: Text('Voltar para o Menu Inicial'),
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Color.fromARGB(255, 62, 52,
-                                    169), // Nova cor de fundo do botão
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomeScreen()),
-                                );
-                              },
-                              child: Text('Voltar para o Menu Inicial'),
-                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 135,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: const Color.fromARGB(255, 62, 52,
+                                          169), // Nova cor de fundo do botão
+                                      minimumSize: Size(100,50), // Define o tamanho mínimo do botão
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => const Perfil()),
+                                      );
+                                    },
+                                    child: const Text('Voltar para o perfil'),
+                                  ),
+                                ),
+
+                                const SizedBox(
+                                    width: 8), // Espaçamento entre os botões
+                                SizedBox(
+                                  width: 135,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color.fromARGB(148, 172, 29, 207), // Nova cor de fundo do botão
+                                      minimumSize: Size(100,50), // Define o tamanho mínimo do botão
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomeScreen()),
+                                      );
+                                    },
+                                    child: const Text('Voltar para o início'),
+                                  ),
+                                )
+                              ],
+                            )
                           ],
                         );
                       },
@@ -367,7 +366,8 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                       context: context,
                       builder: (context) => AlertDialog(
                         title: const Text('Erro no cadastro'),
-                        content: const Text('Por favor, preencha todos os campos obrigatórios.'),
+                        content: const Text(
+                            'Por favor, preencha todos os campos.'),
                         actions: [
                           TextButton(
                             onPressed: () {
