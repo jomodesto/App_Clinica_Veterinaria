@@ -37,11 +37,12 @@ class ConsultaEmergencia extends StatelessWidget {
                   SizedBox(
                     width: 200,
                     height: 250,
-                    child: Image.asset("assets/wpp.png"),
+                    child: Image.asset(
+                        "assets/wpp.png"), // Exibe a imagem do ícone do WhatsApp
                   ),
                   SizedBox(height: 16),
                   Text(
-                    "Para redirecionarmos você para nosso WhatsApp de emergência, toque no botão acima.",
+                    "Para redirecionarmos você para nosso WhatsApp de emergência, toque no botão acima.", // Mensagem de instrução para o usuário
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16),
                   ),
@@ -52,7 +53,8 @@ class ConsultaEmergencia extends StatelessWidget {
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: _launchUrl,
+                  onTap:
+                      _launchUrl, // Ao tocar no container, a função _launchUrl é chamada para abrir o WhatsApp
                 ),
               ),
             ),

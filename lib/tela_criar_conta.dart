@@ -1,12 +1,17 @@
-import 'tela_login.dart';
-import 'package:flutter/material.dart';
+import 'tela_login.dart'; // Importa o arquivo "tela_login.dart" para utilizar posteriormente
+import 'package:flutter/material.dart'; // Importa o pacote de widgets do Flutter
 
 class CadastroPage extends StatelessWidget {
+  // Cria a classe "CadastroPage" que herda de StatelessWidget
   @override
   Widget build(BuildContext context) {
+    // Sobrescreve o método build para construir a interface da página
     return Scaffold(
+      // Retorna um Scaffold, que é um layout básico para a página
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 248, 237, 248),
+        // Define a barra de aplicativo
+        backgroundColor: Color.fromARGB(
+            255, 248, 237, 248), // Define a cor de fundo da barra de aplicativo
         automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(
@@ -18,9 +23,15 @@ class CadastroPage extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 10, left: 40, right: 40),
+        // Define o corpo da página
+        padding: EdgeInsets.only(
+            top: 10,
+            left: 40,
+            right: 40), // Define o preenchimento interno do Container
         decoration: BoxDecoration(
+          // Define a decoração do Container
           gradient: LinearGradient(
+            // Cria um gradiente para o fundo
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             stops: [0.4, 0.6, 0.8, 1.0],
@@ -33,11 +44,13 @@ class CadastroPage extends StatelessWidget {
           ),
         ),
         child: ListView(
+          // Cria um ListView para os elementos filhos
           children: <Widget>[
             SizedBox(
               width: 200,
               height: 240,
-              child: Image.asset("assets/logo.png"),
+              child: Image.asset(
+                  "assets/logo.png"), // Exibe uma imagem do arquivo "assets/logo.png"
             ),
             Container(
               child: Text(

@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 class Ajuda extends StatelessWidget {
   final String _phoneNumber = '5534988785945';
 
+  // Função assíncrona para abrir o WhatsApp ao pressionar o botão
   Future<void> _launchUrl() async {
     final String url = 'https://wa.me/$_phoneNumber';
     if (await canLaunch(url)) {
@@ -17,14 +18,16 @@ class Ajuda extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 150, 57, 213),
+        backgroundColor: Color.fromARGB(
+            255, 150, 57, 213), // Define a cor de fundo da AppBar
         leading: IconButton(
           icon: Icon(
-            Icons.chevron_left,
+            Icons.chevron_left, // Ícone de seta para a esquerda
             size: 40,
           ),
-          color: Colors.black38,
-          onPressed: () => Navigator.pop(context, false),
+          color: Colors.black38, // Define a cor do ícone
+          onPressed: () => Navigator.pop(
+              context, false), // Define a ação de voltar ao pressionar o ícone
         ),
       ),
       body: Container(
@@ -37,11 +40,12 @@ class Ajuda extends StatelessWidget {
                   SizedBox(
                     width: 200,
                     height: 250,
-                    child: Image.asset("assets/wpp.png"),
+                    child: Image.asset(
+                        "assets/wpp.png"), // Exibe a imagem do WhatsApp
                   ),
                   SizedBox(height: 16),
                   Text(
-                    "Para redirecionarmos você para nosso WhatsApp de emergência, toque no botão acima.",
+                    "Para redirecionarmos você para nosso WhatsApp de emergência, toque no botão acima.", // Mensagem de instrução
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16),
                   ),
@@ -52,7 +56,8 @@ class Ajuda extends StatelessWidget {
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: _launchUrl,
+                  onTap:
+                      _launchUrl, // Ao tocar no container, chama a função para abrir o WhatsApp
                 ),
               ),
             ),

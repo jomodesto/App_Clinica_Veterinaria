@@ -1,3 +1,4 @@
+import 'package:clinica_veterinaria1/tela_desmarcar_consulta.dart';
 import 'package:clinica_veterinaria1/tela_marcar_consulta_selecionar_profissional.dart';
 import 'package:flutter/material.dart';
 
@@ -9,23 +10,23 @@ class ConsultarAgendamentos extends StatefulWidget {
 }
 
 class _ConsultarAgendamentosState extends State<ConsultarAgendamentos> {
-  int? selectedIndex;
+  int? selectedIndex; // Índice do agendamento selecionado
   final List<Agendamento> agendamentos = [
     Agendamento(
       paciente: 'Linda',
-      data: '25/05/2023',
+      data: '25/06/2023',
       hora: '14:30',
       medico: 'Dr. João',
     ),
     Agendamento(
       paciente: 'Linda',
-      data: '27/05/2023',
+      data: '27/06/2023',
       hora: '09:00',
       medico: 'Dr. Maria',
     ),
     Agendamento(
       paciente: 'Mel',
-      data: '30/05/2023',
+      data: '30/06/2023',
       hora: '16:45',
       medico: 'Dr. Rita',
     ),
@@ -144,7 +145,11 @@ class _ConsultarAgendamentosState extends State<ConsultarAgendamentos> {
                         actions: [
                           ElevatedButton(
                             onPressed: () {
-                              // Ação do botão 1
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DesmarcarConsulta()),
+                              ); // Ação do botão 1
                             },
                             style: ElevatedButton.styleFrom(
                               primary: Color.fromARGB(255, 62, 52, 169),
