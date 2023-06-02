@@ -1,14 +1,18 @@
-import 'package:clinica_veterinaria1/tela_inicial.dart';
-
+import 'package:clinica_veterinaria1/tela_inicial.dart'; // Importa o arquivo "tela_inicial.dart"
 import 'tela_esqueci_minha_senha.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; // Importa o pacote de widgets do Flutter
 
 class LoginPage extends StatelessWidget {
+  // Cria a classe "LoginPage" que herda de StatelessWidget
   @override
   Widget build(BuildContext context) {
+    // Sobrescreve o método build para construir a interface da página
     return Scaffold(
+      // Retorna um Scaffold, que é um layout básico para a página
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 248, 237, 248),
+        // Define a barra de aplicativo
+        backgroundColor: Color.fromARGB(
+            255, 248, 237, 248), // Define a cor de fundo da barra de aplicativo
         automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(
@@ -20,9 +24,15 @@ class LoginPage extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 10, left: 40, right: 40),
+        // Define o corpo da página
+        padding: EdgeInsets.only(
+            top: 10,
+            left: 40,
+            right: 40), // Define o preenchimento interno do Container
         decoration: BoxDecoration(
+          // Define a decoração do Container
           gradient: LinearGradient(
+            // Cria um gradiente para o fundo
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             stops: [0.4, 0.6, 0.8, 1.0],
@@ -35,11 +45,13 @@ class LoginPage extends StatelessWidget {
           ),
         ),
         child: ListView(
+          // Cria um ListView para os elementos filhos
           children: <Widget>[
             SizedBox(
               width: 200,
               height: 250,
-              child: Image.asset("assets/logo.png"),
+              child: Image.asset(
+                  "assets/logo.png"), // Exibe uma imagem do arquivo "assets/logo.png"
             ),
             SizedBox(
               height: 15,
@@ -99,7 +111,9 @@ class LoginPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ResetSenha()),
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            ResetSenha()), // Navegar para a tela "ResetSenha"
                   );
                 },
                 child: Text(
@@ -118,7 +132,9 @@ class LoginPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              HomeScreen()), // Navegar para a tela "HomeScreen"
                     );
                   },
                   style: ElevatedButton.styleFrom(

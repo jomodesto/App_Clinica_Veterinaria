@@ -27,14 +27,14 @@ class BemVindo extends StatelessWidget {
             SizedBox(
               width: 200,
               height: 250,
-              child: Image.asset("assets/logo.png"),
+              child: Image.asset("assets/logo.png"), // Exibe a imagem do logo
             ),
             SizedBox(
               height: 15,
             ),
             Container(
               child: Text(
-                'Seja bem-vindo!',
+                'Seja bem-vindo!', // Mensagem de boas-vindas
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30.0,
@@ -53,19 +53,22 @@ class BemVindo extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              LoginPage()), // Navega para a tela de login ao pressionar o botão
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromARGB(255, 62, 52, 169), // Cor roxa
+                    primary: Color.fromARGB(255, 62, 52,
+                        169), // Define a cor de fundo do botão de login
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    minimumSize: Size(
-                        double.infinity, 50.0), // Largura ajustável do botão
+                    minimumSize: Size(double.infinity,
+                        50.0), // Define o tamanho mínimo do botão
                   ),
                   child: Text(
-                    'Login',
+                    'Login', // Texto do botão de login
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
@@ -84,19 +87,22 @@ class BemVindo extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => CadastroPage()),
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CadastroPage()), // Navega para a tela de cadastro ao pressionar o botão
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromARGB(255, 150, 57, 213),
+                    primary: Color.fromARGB(255, 150, 57,
+                        213), // Define a cor de fundo do botão de cadastro
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    minimumSize: Size(
-                        double.infinity, 50.0), // Largura ajustável do botão
+                    minimumSize: Size(double.infinity,
+                        50.0), // Define o tamanho mínimo do botão
                   ),
                   child: Text(
-                    'Cadastrar',
+                    'Cadastrar', // Texto do botão de cadastro
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
