@@ -382,10 +382,3 @@ class _MarcarConsultaDataState extends State<MarcarConsultaData> {
     );
   }
 }
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MarcarConsultaData(),
-  ));
-}
