@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:clinica_veterinaria1/tela_inicial.dart';
 
 class CadastrarAnimal extends StatefulWidget {
   const CadastrarAnimal({Key? key});
@@ -15,7 +16,13 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
   String _especieAnimal = '';
   String _porteAnimal = '';
   String _racaAnimal = '';
-  bool _cadastroRealizado = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController.text = 'maria_h@outlook.com'; // Definir o e-mail fixo aqui
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +80,10 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                       child: TextField(
                         keyboardType: TextInputType.emailAddress,
                         controller: _emailController,
+                        enabled: false,
                         decoration: InputDecoration(
                           hintText: 'maria_h@outlook.com',
-                          labelText: "E-mail",
+                          labelText: "maria_h@outlook.com",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
@@ -316,17 +324,42 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                     // Validar todos os campos preenchidos e exibir o modal de "Cadastro realizado com sucesso"
                     showDialog(
                       context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text('Cadastro realizado com sucesso'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Fechar'),
-                          ),
-                        ],
-                      ),
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Consulta marcada com sucesso!'),
+                          
+                          actions: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color.fromARGB(255, 62, 52,
+                                    169), // Nova cor de fundo do botão
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()),
+                                );
+                              },
+                              child: Text('Voltar para o Menu Inicial'),
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color.fromARGB(255, 62, 52,
+                                    169), // Nova cor de fundo do botão
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()),
+                                );
+                              },
+                              child: Text('Voltar para o Menu Inicial'),
+                            ),
+                          ],
+                        );
+                      },
                     );
                   } else {
                     // Exibir mensagem de erro caso algum campo esteja vazio
