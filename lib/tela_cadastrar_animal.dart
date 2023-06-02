@@ -12,7 +12,6 @@ class CadastrarAnimal extends StatefulWidget {
 class CadastrarAnimalState extends State<CadastrarAnimal> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _telefoneController = TextEditingController();
-  bool _adicionarAnimais = false;
   String _nomeAnimal = '';
   String _especieAnimal = '';
   String _porteAnimal = '';
@@ -268,7 +267,7 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                 FloatingActionButton(
                   onPressed: () {
                     setState(() {
-                      _adicionarAnimais = true;
+                      
                     });
                   },
                   mini: true, // Define o botão como miniatura
@@ -285,7 +284,7 @@ class CadastrarAnimalState extends State<CadastrarAnimal> {
                 ),
                 const SizedBox(width: 2),
                 const Text(
-                  'Cadastrar animais',
+                  'Cadastrar mais animais',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.grey,

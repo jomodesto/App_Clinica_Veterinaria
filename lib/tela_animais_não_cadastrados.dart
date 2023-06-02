@@ -1,5 +1,4 @@
 import 'package:clinica_veterinaria1/tela_cadastrar_animal.dart';
-import 'package:clinica_veterinaria1/tela_perfil.dart';
 import 'package:flutter/material.dart';
 import 'package:clinica_veterinaria1/tela_inicial.dart';
 
