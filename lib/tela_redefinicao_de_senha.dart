@@ -1,14 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'tela_login.dart';
+import 'tela_login.dart'; // Importa o arquivo "tela_login.dart"
 
 class NewSenha extends StatelessWidget {
+  // Cria a classe "NewSenha" que herda de StatelessWidget
   @override
   Widget build(BuildContext context) {
+    // Sobrescreve o método build para construir a interface da página
     return Scaffold(
+      // Retorna um Scaffold, que é um layout básico para a página
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 248, 237, 248),
+        // Define a barra de aplicativo
+        backgroundColor: Color.fromARGB(
+            255, 248, 237, 248), // Define a cor de fundo da barra de aplicativo
         automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(
@@ -20,9 +25,15 @@ class NewSenha extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 10, left: 40, right: 40),
+        // Define o corpo da página
+        padding: EdgeInsets.only(
+            top: 10,
+            left: 40,
+            right: 40), // Define o preenchimento interno do Container
         decoration: BoxDecoration(
+          // Define a decoração do Container
           gradient: LinearGradient(
+            // Cria um gradiente para o fundo
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             stops: [0.4, 0.6, 0.8, 1.0],
@@ -35,17 +46,19 @@ class NewSenha extends StatelessWidget {
           ),
         ),
         child: ListView(
+          // Cria um ListView para os elementos filhos
           children: <Widget>[
             SizedBox(
               width: 200,
               height: 250,
-              child: Image.asset("assets/logo.png"),
+              child: Image.asset(
+                  "assets/logo.png"), // Exibe uma imagem do arquivo "assets/logo.png"
             ),
             SizedBox(
               height: 15,
             ),
             Text(
-              "Enviamos uma nova senha para seu E-mail. Por favor redefina a senha.",
+              "Enviamos uma nova senha para seu E-mail. Por favor redefina a senha.", // Texto informativo
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
@@ -59,7 +72,8 @@ class NewSenha extends StatelessWidget {
               //autofocus: true,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                labelText: "Digite a senha recebida.",
+                labelText:
+                    "Digite a senha recebida.", // Rótulo do campo de senha
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -76,7 +90,7 @@ class NewSenha extends StatelessWidget {
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Nova senha",
+                labelText: "Nova senha", // Rótulo do campo de nova senha
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -93,7 +107,8 @@ class NewSenha extends StatelessWidget {
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Confirmar nova senha",
+                labelText:
+                    "Confirmar nova senha", // Rótulo do campo de confirmação de senha
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -115,7 +130,7 @@ class NewSenha extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              LoginPage()), // Navegar para a tela Nova Senha  // Ação a ser executada ao clicar no botão
+                              LoginPage()), // Navegar para a tela de login (LoginPage) // Ação a ser executada ao clicar no botão
                     );
                   },
                   style: ElevatedButton.styleFrom(
